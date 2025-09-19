@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-
-void criarCabecalhoMensagem(char *mensagem);
-void criarLinhaCabecalho();
-void limparTela();
+#include "mensagem_utils.h"
 
 int main() {
     char nomeCompleto[255] = "", dataNascimento[20] = "", 
@@ -15,6 +12,7 @@ int main() {
     limparTela();
     
     criarCabecalhoMensagem("Cadastro de Clientes\n\0");
+    
     printf("Nome Completo: ");
     fgets(nomeCompleto, sizeof(nomeCompleto), stdin);
 
@@ -39,7 +37,9 @@ int main() {
     snprintf(dataCadastro, sizeof(dataCadastro), "%02d/%02d/%d", tInfo->tm_mday, (tInfo->tm_mon + 1), (tInfo->tm_year + 1900));
 
     printf("\n");
+
     criarCabecalhoMensagem("Dados do cliente cadastrado\n\0");
+
     printf("Nome Completo: %s", nomeCompleto);
     printf("Data de Nascimento: %s", dataNascimento);
     printf("Cidade/País de Origem: %s", cidadePaisOrigem);
@@ -48,24 +48,6 @@ int main() {
     printf("Escolaridade: %s", escolaridade);
     printf("Data de Cadastro: %s\n", dataCadastro);
 
-}
-
-void criarCabecalhoMensagem(char *mensagem){
-    criarLinhaCabecalho();
-
-    // imprimindo caractere por caractere
-    // while(*mensagem != '\0'){
-    //     printf("%c", *mensagem++);
-    // }
-    printf("%s", mensagem);
-
-    criarLinhaCabecalho();
-}
-
-void criarLinhaCabecalho(){
-    printf("==================================\n");
-}
-
-void limparTela(){
-    printf("\e[1;1H\e[2J");
+    char letraA = 'a';
+    printf("letra %c - numero na tabela ASCII %d", letraA, letraA);
 }
